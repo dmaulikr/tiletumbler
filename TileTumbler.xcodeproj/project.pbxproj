@@ -134,7 +134,7 @@
 		56A0850918490CCA00FC910E /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0850818490CCA00FC910E /* IntroLayer.m */; };
 		56A085121849124A00FC910E /* TTBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A085111849124A00FC910E /* TTBoard.m */; };
 		56A085151849141500FC910E /* TTTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A085141849141500FC910E /* TTTile.m */; };
-		56A08517184916C200FC910E /* CellRect.png in Resources */ = {isa = PBXBuildFile; fileRef = 56A08516184916C200FC910E /* CellRect.png */; };
+		56F674E41849212700754AFB /* Block.png in Resources */ = {isa = PBXBuildFile; fileRef = 56F674E31849212700754AFB /* Block.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -402,7 +402,7 @@
 		56A085111849124A00FC910E /* TTBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBoard.m; sourceTree = "<group>"; };
 		56A085131849141500FC910E /* TTTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTile.h; sourceTree = "<group>"; };
 		56A085141849141500FC910E /* TTTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTile.m; sourceTree = "<group>"; };
-		56A08516184916C200FC910E /* CellRect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CellRect.png; sourceTree = "<group>"; };
+		56F674E31849212700754AFB /* Block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Block.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -476,7 +476,7 @@
 		56A0838A18490CC800FC910E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				56A08516184916C200FC910E /* CellRect.png */,
+				56F674E31849212700754AFB /* Block.png */,
 				56A0838B18490CC800FC910E /* Default.png */,
 				56A0838D18490CC800FC910E /* Default-Landscape~ipad.png */,
 				56A0838F18490CC800FC910E /* fps_images.png */,
@@ -901,7 +901,6 @@
 				56A0839A18490CC800FC910E /* Icon-Small.png in Resources */,
 				56A0838E18490CC800FC910E /* Default-Landscape~ipad.png in Resources */,
 				56A0839E18490CC800FC910E /* Icon.png in Resources */,
-				56A08517184916C200FC910E /* CellRect.png in Resources */,
 				56A0839818490CC800FC910E /* Icon-Small-50.png in Resources */,
 				56A0839C18490CC800FC910E /* Icon-Small@2x.png in Resources */,
 				56A083A018490CC800FC910E /* Icon@2x.png in Resources */,
@@ -910,6 +909,7 @@
 				56A084E118490CCA00FC910E /* ChangeLog in Resources */,
 				56A0839418490CC800FC910E /* fps_images-ipadhd.png in Resources */,
 				56A0839018490CC800FC910E /* fps_images.png in Resources */,
+				56F674E41849212700754AFB /* Block.png in Resources */,
 				56A0839218490CC800FC910E /* fps_images-hd.png in Resources */,
 				56A0839618490CC800FC910E /* Icon-72.png in Resources */,
 			);
@@ -1132,6 +1132,7 @@
 				56A0850E18490CCA00FC910E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,10 +8,12 @@
   if ((self = [super initWithFile:filename])) {
     
     // Store the pixel size
-    float w = super.boundingBox.size.width;
-    float h = super.boundingBox.size.height;
+    float w = super.contentSize.width;
+    float h = super.contentSize.height;
     
     pixelSize = CGSizeMake(w, h);
+    
+    [self setAnchorPoint:CGPointMake(0, 0)];
   }
   
   return self;
@@ -34,12 +36,13 @@
     // Store our size
     pixelSize = size;
     
-    // Scale ourselves to fit this size
-    [self setScaleX: pixelSize.width/self.boundingBox.size.width];
-    [self setScaleY: pixelSize.height/self.boundingBox.size.height];
+    [self setScaleX: pixelSize.width/self.contentSize.width];
+    [self setScaleY: pixelSize.height/self.contentSize.height];
     
     // Set our position
     [self setPosition: position];
+    
+    [self setAnchorPoint:CGPointMake(0, 0)];
   }
   
   return self;
