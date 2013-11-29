@@ -1,6 +1,6 @@
 
 #import "IntroLayer.h"
-#import "TTBoard.h"
+#import "TTTile.h"
 
 #pragma mark - IntroLayer
 
@@ -13,7 +13,13 @@
 
 	[scene addChild: layer];
   
-  TTBoard *ttBoard;
+  CCDirector *sharedDirector = [CCDirector sharedDirector];
+  CGSize winSize = sharedDirector.winSize;
+  
+  // Add a tile to check initialisation works
+  TTTile *testTile = [[TTTile alloc] initWithFile:@"CellRect.png" Position:CGPointMake(winSize.width/2, winSize.height/2)];
+  
+  [layer addChild: testTile];
 	
 	return scene;
 }
