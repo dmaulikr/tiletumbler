@@ -1,10 +1,3 @@
-//
-//  AppDelegate.h
-//  TileTumbler
-//
-//  Created by Ronan Turner on 29/11/2013.
-//  Copyright __MyCompanyName__ 2013. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
@@ -14,11 +7,11 @@
 	UIWindow *window_;
 	UINavigationController *navController_;
 
-	CCDirectorIOS	*director_;							// weak ref
+	CCDirectorIOS	*__unsafe_unretained director_;							// weak ref
 }
 
-@property (nonatomic, retain) UIWindow *window;
+@property (nonatomic, strong) UIWindow *window;
 @property (readonly) UINavigationController *navController;
-@property (readonly) CCDirectorIOS *director;
+@property (unsafe_unretained, readonly) CCDirectorIOS *director;
 
 @end
