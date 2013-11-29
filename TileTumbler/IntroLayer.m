@@ -1,5 +1,6 @@
 
 #import "IntroLayer.h"
+#import "TTBoard.h"
 
 #pragma mark - IntroLayer
 
@@ -11,6 +12,8 @@
 	IntroLayer *layer = [IntroLayer node];
 
 	[scene addChild: layer];
+  
+  TTBoard *ttBoard;
 	
 	return scene;
 }
