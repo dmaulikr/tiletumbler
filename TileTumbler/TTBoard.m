@@ -40,6 +40,26 @@
   }
 }
 
+-(TTTile *)generateTileFor:(uint)index {
+  
+  // Calculate the position in the world-space for this new tile
+  CGPoint position = [self positionFromIndex: index];
+  CGPoint positionMult = CGPointMake(tileSize.width, tileSize.height);
+  
+  CGPoint positionWorld = ccpCompMult(position, positionMult);
+  
+  // Generate the new tile
+  TTTile *newTile = [[TTTile alloc] initWithFile:@"Block.png"
+                                        Position:positionWorld
+                                            Size:tileSize];
+  
+  // Decide on a new colour for the tile
+  uint colorCode = rand() % 4;
+  [newTile setColourCode:colorCode];
+  
+  return newTile;
+}
+
 -(void) generateRandomTiles {
   
   // Iterate through the array
@@ -51,20 +71,7 @@
     if (oldTile != nil)
       [self removeChild:oldTile cleanup:YES];
     
-    // Calculate the position in the world-space for this new tile
-    CGPoint position = [self positionFromIndex: index];
-    CGPoint positionMult = CGPointMake(tileSize.width, tileSize.height);
-    
-    CGPoint positionWorld = ccpCompMult(position, positionMult);
-    
-    // Generate the new tile
-    TTTile *newTile = [[TTTile alloc] initWithFile:@"Block.png"
-                                          Position:positionWorld
-                                              Size:tileSize];
-    
-    // Decide on a new colour for the tile
-    uint colorCode = rand() % 4;
-    [newTile setColourCode:colorCode];
+    TTTile *newTile = [self generateTileFor:index];
     
     // Add the tile to the array and the board's children
     [tiles replaceObjectAtIndex:index withObject: newTile];
@@ -75,9 +82,6 @@
 // A method to be called to pass touch events to this board
 -(void)boardTouched:(CGPoint)touchLocation {
   
-  NSLog(@"Board touched at (%d, %d)", (int)roundf(touchLocation.x),
-          (int)roundf(touchLocation.y));
-  
   // 1. Attempt to find the tile index that we clicked on
   for (int i = 0; i < tiles.count; i++) {
     
@@ -87,16 +91,56 @@
       
       if (CGRectContainsPoint(tile.boundingBox, touchLocation)) {
         
-        uint arrayIndex = i;
-        CGPoint tileIndex = [self positionFromIndex:arrayIndex];
-        
-        NSLog(@"Tile chosen at (%d, %d)", (int)tileIndex.x, (int)tileIndex.y);
-        [tile setColourCode:4];
+        // 2. Pass the message on
+        [self tileTouched: tile];
       }
     }
   }
 }
 
+// Removes the given tile from the board
+-(void)tileTouched:(TTTile *)tile {
+  
+  [self removeTile: tile];
+  [self fixBoard];
+}
+
+// Iterates across the board, finding any NULL tiles and
+// generating a new tile for each of these.
+-(void)fixBoard {
+  
+  for (uint i = 0; i < tiles.count; i++) {
+    
+    if (tiles[i] == (id)[NSNull null]) {
+      
+      // Generate a new tile and add it to the board
+      TTTile *newTile = [self generateTileFor:i];
+      [tiles replaceObjectAtIndex:i withObject:newTile];
+      
+      [self addChild: newTile];
+    }
+  }
+}
+
+-(void)removeTile:(TTTile *)tile {
+  
+  // Find the tile in our array and replace with null
+  for (int i = 0; i < tiles.count; i++) {
+    if (tiles[i] == tile)
+      [tiles replaceObjectAtIndex:i withObject:(id)[NSNull null]];
+  }
+  
+  // Remove the tile from the board's children
+  [self removeChild:tile cleanup:YES];
+}
+
+// Convenience method to check the tile index is valid
+// then pass it to tileTouched:(TTTile *)
+-(void)tileTouchedAt:(uint)index {
+  
+  if (tiles[index] != (id)[NSNull null])
+    [self tileTouched: tiles[index]];
+}
 
 // Generates the position that a tile should be in based on the position
 // in the array. Works with x increasing horizontally and y increasing
