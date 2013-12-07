@@ -1,6 +1,5 @@
 
 #import "IntroLayer.h"
-#import "TTBoard.h"
 
 #pragma mark - IntroLayer
 
@@ -10,18 +9,38 @@
 {
 	CCScene *scene = [CCScene node];
 	IntroLayer *layer = [IntroLayer node];
+  
+  // Allow touches
+  layer.isTouchEnabled = YES;
 
 	[scene addChild: layer];
   
-  CCDirector *sharedDirector = [CCDirector sharedDirector];
-  CGSize winSize = sharedDirector.winSize;
-  
-  // Add a tile to check initialisation works
-  TTBoard *testBoard = [[TTBoard alloc] initWithSize:CGSizeMake(10, 15)];
-  
-  [layer addChild: testBoard];
-	
 	return scene;
+}
+
+-(id) init
+{
+  if ((self = [super init])) {
+    
+    // Add a tile to check initialisation works
+    testBoard = [[TTBoard alloc] initWithSize:CGSizeMake(10, 15)];
+    
+    [self addChild: testBoard];
+  }
+  
+  return self;
+}
+
+-(void) ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+  UITouch *touch = [touches anyObject];
+  if (touch == nil) return;
+  
+  // Convert our point to our object-relative coordinates
+  CGPoint touchNode = [self convertTouchToNodeSpace:touch];
+  
+  if (CGRectContainsPoint(testBoard.boundingBox, touchNode))
+    [testBoard boardTouched:touchNode];
 }
 
 -(void) onEnter

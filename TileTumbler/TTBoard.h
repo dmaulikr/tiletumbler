@@ -22,4 +22,7 @@
 // replacing any previous tiles present.
 -(void)generateRandomTiles;
 
+// A method to be called to pass touch events to this board
+-(void)boardTouched:(CGPoint)touchLocation;
+
 @end

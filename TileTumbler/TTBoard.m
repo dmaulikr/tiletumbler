@@ -13,6 +13,9 @@
     
     boardSize = _boardSize;
     
+    [self setContentSize:CGSizeMake(tileSize.width*boardSize.width,
+                                    tileSize.height*boardSize.height)];
+    
     // Initialise the tiles array and generate a new set of tiles
     [self setupNewTiles];
     [self generateRandomTiles];
@@ -68,6 +71,32 @@
     [self addChild: newTile];
   }
 }
+
+// A method to be called to pass touch events to this board
+-(void)boardTouched:(CGPoint)touchLocation {
+  
+  NSLog(@"Board touched at (%d, %d)", (int)roundf(touchLocation.x),
+          (int)roundf(touchLocation.y));
+  
+  // 1. Attempt to find the tile index that we clicked on
+  for (int i = 0; i < tiles.count; i++) {
+    
+    TTTile *tile = tiles[i];
+    
+    if (tile != (id)[NSNull null]) {
+      
+      if (CGRectContainsPoint(tile.boundingBox, touchLocation)) {
+        
+        uint arrayIndex = i;
+        CGPoint tileIndex = [self positionFromIndex:arrayIndex];
+        
+        NSLog(@"Tile chosen at (%d, %d)", (int)tileIndex.x, (int)tileIndex.y);
+        [tile setColourCode:4];
+      }
+    }
+  }
+}
+
 
 // Generates the position that a tile should be in based on the position
 // in the array. Works with x increasing horizontally and y increasing

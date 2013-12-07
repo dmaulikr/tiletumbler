@@ -69,6 +69,10 @@
       [self setColor:ccc3(80, 191, 101)];
       break;
       
+    case 4:
+      [self setColor:ccc3(255, 255, 255)];
+      break;
+      
     default:
       NSLog(@"Warning, no colour known for code %d.", ColourCode);
       break;
