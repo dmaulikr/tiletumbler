@@ -8,6 +8,9 @@
   CGSize pixelSize;
 }
 
+// Stores the colour-group this tile has been assigned
+@property (nonatomic) uint ColourCode;
+
 // Default initialisation - simply uses the sprite's image size and
 // starts at position (0,0)
 -(id) initWithFile:(NSString *)filename;

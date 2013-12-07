@@ -48,4 +48,33 @@
   return self;
 }
 
+// Automatically assigns the appropriate colour based on
+// the tile's assigned colour-code.
+-(void) setColourCode:(uint)ColourCode {
+  
+  switch (ColourCode) {
+    case 0:
+      [self setColor:ccc3(217, 35, 50)];
+      break;
+      
+    case 1:
+      [self setColor:ccc3(51, 130, 161)];
+      break;
+      
+    case 2:
+      [self setColor:ccc3(242, 216, 82)];
+      break;
+      
+    case 3:
+      [self setColor:ccc3(80, 191, 101)];
+      break;
+      
+    default:
+      NSLog(@"Warning, no colour known for code %d.", ColourCode);
+      break;
+  }
+  
+  _ColourCode = ColourCode;
+}
+
 @end

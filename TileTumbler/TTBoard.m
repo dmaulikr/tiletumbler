@@ -9,7 +9,7 @@
   if ((self = [super init])) {
   
     // Pre-stored constants
-    tileSize = CGSizeMake(40, 40);
+    tileSize = CGSizeMake(32, 32);
     
     boardSize = _boardSize;
     
@@ -58,6 +58,10 @@
     TTTile *newTile = [[TTTile alloc] initWithFile:@"Block.png"
                                           Position:positionWorld
                                               Size:tileSize];
+    
+    // Decide on a new colour for the tile
+    uint colorCode = rand() % 4;
+    [newTile setColourCode:colorCode];
     
     // Add the tile to the array and the board's children
     [tiles replaceObjectAtIndex:index withObject: newTile];

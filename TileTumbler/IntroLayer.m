@@ -17,7 +17,7 @@
   CGSize winSize = sharedDirector.winSize;
   
   // Add a tile to check initialisation works
-  TTBoard *testBoard = [[TTBoard alloc] initWithSize:CGSizeMake(8, 12)];
+  TTBoard *testBoard = [[TTBoard alloc] initWithSize:CGSizeMake(10, 15)];
   
   [layer addChild: testBoard];
 	
