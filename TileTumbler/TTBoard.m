@@ -113,11 +113,40 @@
     
     if (tiles[i] == (id)[NSNull null]) {
       
-      // Generate a new tile and add it to the board
-      TTTile *newTile = [self generateTileFor:i];
-      [tiles replaceObjectAtIndex:i withObject:newTile];
+      CGPoint startingPosition = [self positionFromIndex:i];
       
-      [self addChild: newTile];
+      for (uint y = startingPosition.y; y < boardSize.height; y++) {
+        
+        // If we're still not at the top, drop the above tiles down
+        if (y < boardSize.height-1) {
+          
+          // Information of tile above our current loop's position
+          CGPoint abovePosition = CGPointMake(startingPosition.x, y+1);
+          TTTile *tileAbove = tiles[[self indexFromPosition:abovePosition]];
+          
+          CGPoint pixelPosition = tileAbove.position;
+          CGPoint sub = CGPointMake(0, tileSize.height);
+          
+          // Information of tile at our current loop's position
+          CGPoint currentPosition = CGPointMake(startingPosition.x, y);
+          uint currentIndex = [self indexFromPosition:currentPosition];
+          
+          // Move tile's actual position down
+          [tileAbove setPosition:ccpSub(pixelPosition, sub)];
+          [tiles replaceObjectAtIndex:currentIndex withObject:tileAbove];
+          
+        } else {
+          
+          // We're at the top; generate a new tile
+          CGPoint topPoint = CGPointMake(startingPosition.x, y);
+          uint topIndex = [self indexFromPosition:topPoint];
+          
+          TTTile *newTile = [self generateTileFor:topIndex];
+          [tiles replaceObjectAtIndex:topIndex withObject:newTile];
+          
+          [self addChild:newTile];
+        }
+      }
     }
   }
 }
