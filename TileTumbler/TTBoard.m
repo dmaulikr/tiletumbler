@@ -101,8 +101,9 @@
 // Removes the given tile from the board
 -(void)tileTouched:(TTTile *)tile {
   
-  [self removeTile: tile];
-  [self fixBoard];
+  [self getConnectedTo:tile];
+  //[self removeTile: tile];
+  //[self fixBoard];
 }
 
 // Iterates across the board, finding any NULL tiles and
@@ -151,6 +152,88 @@
   }
 }
 
+// The entry method to our recursive search for connected tiles, takes
+// a given tile and determines all the adjacent tiles that are connected to it
+// via the same colour.
+-(NSArray *)getConnectedTo:(TTTile *)tile {
+  
+  NSMutableSet *connectedSet = [NSMutableSet set];
+  [self getConnectedTo:tile WithSet:connectedSet];
+  
+  // Highlight the connected tiles by changing colour
+  for (TTTile *tile in connectedSet) {
+    tile.ColourCode = 4;
+  }
+  
+  return connectedSet.allObjects;
+}
+
+// Our recursive companion to the above method, used in recursive calls to
+// neighbouring tiles. Takes the set /found/ which identifies all tiles
+// that have already been indexed and so no recursive calls should be made
+// on these.
+-(void)getConnectedTo:(TTTile *)tile WithSet:(NSMutableSet *)found {
+  
+  // Can't have a nil set as we don't return a value!
+  if (found == nil) return;
+  
+  // Get the colour of our original tile and set this tile as searched
+  uint originColour = tile.ColourCode;
+  [found addObject:tile];
+  
+  // Check if each neighbour qualifies as connected then recursively call them
+  CGPoint currentPosition = [self findTilePosition:tile];
+  
+  NSMutableArray *validNeighbours = [NSMutableArray arrayWithCapacity:4];
+  
+  // Left Neighbour
+  if (currentPosition.x >= 0) {
+    
+    CGPoint leftPos = CGPointMake(currentPosition.x-1, currentPosition.y);
+    TTTile *left = tiles[[self indexFromPosition:leftPos]];
+    
+    if (left.ColourCode == originColour && ![found containsObject:left])
+      [validNeighbours addObject:left];
+  }
+  
+  // Right Neighbour
+  if (currentPosition.x < boardSize.width-1) {
+    
+    CGPoint rightPos = CGPointMake(currentPosition.x+1, currentPosition.y);
+    TTTile *right = tiles[[self indexFromPosition:rightPos]];
+    
+    if (right.ColourCode == originColour && ![found containsObject:right])
+      [validNeighbours addObject:right];
+  }
+  
+  // Upper Neighbour
+  if (currentPosition.y < boardSize.height-1) {
+    
+    CGPoint upperPos = CGPointMake(currentPosition.x, currentPosition.y+1);
+    TTTile *upper = tiles[[self indexFromPosition:upperPos]];
+    
+    if (upper.ColourCode == originColour && ![found containsObject:upper])
+      [validNeighbours addObject:upper];
+  }
+  
+  // Lower Neighbour
+  if (currentPosition.y > 0) {
+    
+    CGPoint lowerPos = CGPointMake(currentPosition.x, currentPosition.y-1);
+    TTTile *lower = tiles[[self indexFromPosition:lowerPos]];
+    
+    if (lower.ColourCode == originColour && ![found containsObject:lower])
+      [validNeighbours addObject:lower];
+  }
+  
+  // For each neighbour, recursively call and add to set
+  for (TTTile *neighbour in validNeighbours) {
+    
+    // Mutable set passed so we don't need to add any results
+    [self getConnectedTo:neighbour WithSet:found];
+  }
+}
+
 -(void)removeTile:(TTTile *)tile {
   
   // Find the tile in our array and replace with null
@@ -168,7 +251,23 @@
 -(void)tileTouchedAt:(uint)index {
   
   if (tiles[index] != (id)[NSNull null])
-    [self tileTouched: tiles[index]];
+    [self getConnectedTo:tiles[index]];
+    //[self tileTouched: tiles[index]];
+}
+
+// Attempts to find the given tile's position in the board coordinates,
+// returns (-1,-1) if not found.
+-(CGPoint) findTilePosition:(TTTile *)tile {
+  
+  if (![self.children containsObject:tile])
+    return CGPointMake(-1, -1);
+  
+  for (int i = 0; i < tiles.count; i++) {
+    
+    if (tiles[i] == tile) return [self positionFromIndex:i];
+  }
+  
+  return CGPointMake(-1, -1);
 }
 
 // Generates the position that a tile should be in based on the position
