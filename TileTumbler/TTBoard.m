@@ -158,7 +158,7 @@
 // increasing vertically.
 -(uint) indexFromPosition:(CGPoint)position {
   
-  return ((uint)position.y * (uint)boardSize.width) + (uint)position.y;
+  return ((uint)position.y * (uint)boardSize.width) + (uint)position.x;
 }
 
 @end
