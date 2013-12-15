@@ -101,16 +101,22 @@
 // Removes the given tile from the board
 -(void)tileTouched:(TTTile *)tile {
   
-  [self getConnectedTo:tile];
-  //[self removeTile: tile];
-  //[self fixBoard];
+  NSArray *connected = [self getConnectedTo:tile];
+  
+  // Remove all our connected tiles
+  for (TTTile *tile in connected) {
+    
+    [self removeTile: tile];
+  }
+  
+  [self fixBoard];
 }
 
 // Iterates across the board, finding any NULL tiles and
 // generating a new tile for each of these.
 -(void)fixBoard {
   
-  for (uint i = 0; i < tiles.count; i++) {
+  for (int i = tiles.count-1; i >= 0; i--) {
     
     if (tiles[i] == (id)[NSNull null]) {
       
@@ -160,11 +166,6 @@
   NSMutableSet *connectedSet = [NSMutableSet set];
   [self getConnectedTo:tile WithSet:connectedSet];
   
-  // Highlight the connected tiles by changing colour
-  for (TTTile *tile in connectedSet) {
-    tile.ColourCode = 4;
-  }
-  
   return connectedSet.allObjects;
 }
 
@@ -187,7 +188,7 @@
   NSMutableArray *validNeighbours = [NSMutableArray arrayWithCapacity:4];
   
   // Left Neighbour
-  if (currentPosition.x >= 0) {
+  if (currentPosition.x > 0) {
     
     CGPoint leftPos = CGPointMake(currentPosition.x-1, currentPosition.y);
     TTTile *left = tiles[[self indexFromPosition:leftPos]];
