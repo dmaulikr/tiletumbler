@@ -2,6 +2,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+#define TILE_SPEED 0.5
+
 @interface TTBoard : CCNode
 {
   // The dimensions of the board (in tiles)

@@ -116,44 +116,57 @@
 // generating a new tile for each of these.
 -(void)fixBoard {
   
-  for (int i = tiles.count-1; i >= 0; i--) {
+  // Iterate across the columns of the board, starting at the bottom tile
+  for (int i = 0; i < boardSize.width; i++) {
     
-    if (tiles[i] == (id)[NSNull null]) {
+    // Count the number of null tiles in this column
+    uint nullCount = 0;
+    
+    // Iterate up the column until we reach the top of the board, excusing
+    // null tiles
+    for (uint y = 0; y < boardSize.height; y++) {
       
-      CGPoint startingPosition = [self positionFromIndex:i];
+      uint tileIndex = [self indexFromPosition:CGPointMake(i, y)];
       
-      for (uint y = startingPosition.y; y < boardSize.height; y++) {
+      // If we find a null tile increase the null count and continue
+      if (tiles[tileIndex] == (id)[NSNull null]) {
         
-        // If we're still not at the top, drop the above tiles down
-        if (y < boardSize.height-1) {
-          
-          // Information of tile above our current loop's position
-          CGPoint abovePosition = CGPointMake(startingPosition.x, y+1);
-          TTTile *tileAbove = tiles[[self indexFromPosition:abovePosition]];
-          
-          CGPoint pixelPosition = tileAbove.position;
-          CGPoint sub = CGPointMake(0, tileSize.height);
-          
-          // Information of tile at our current loop's position
-          CGPoint currentPosition = CGPointMake(startingPosition.x, y);
-          uint currentIndex = [self indexFromPosition:currentPosition];
-          
-          // Move tile's actual position down
-          [tileAbove setPosition:ccpSub(pixelPosition, sub)];
-          [tiles replaceObjectAtIndex:currentIndex withObject:tileAbove];
-          
-        } else {
-          
-          // We're at the top; generate a new tile
-          CGPoint topPoint = CGPointMake(startingPosition.x, y);
-          uint topIndex = [self indexFromPosition:topPoint];
-          
-          TTTile *newTile = [self generateTileFor:topIndex];
-          [tiles replaceObjectAtIndex:topIndex withObject:newTile];
-          
-          [self addChild:newTile];
-        }
+        nullCount++;
+      } else if (nullCount > 0) {
+        
+        // Move tile to replace the lowermost null tile
+        CGPoint belowPosition = CGPointMake(i, y - nullCount);
+        uint belowIndex = [self indexFromPosition:belowPosition];
+        
+        // Create a moving transition to move the tile
+        CGPoint belowPxPosition = CGPointMake(belowPosition.x * tileSize.width,  belowPosition.y * tileSize.height);
+        
+        id move = [CCMoveTo actionWithDuration:TILE_SPEED position:belowPxPosition];
+        
+        [tiles[tileIndex] runAction:move];
+        [tiles replaceObjectAtIndex:belowIndex withObject:tiles[tileIndex]];
       }
+    }
+    
+    // Generate new tiles for our upper null positions
+    for (uint y = boardSize.height - nullCount; y < boardSize.height; y++) {
+      
+      CGPoint expectedPosition = CGPointMake(i, y);
+      CGPoint expectedPxPosition = CGPointMake(expectedPosition.x * tileSize.width, expectedPosition.y * tileSize.height);
+      
+      uint tileIndex = [self indexFromPosition:expectedPosition];
+      
+      // Generate a move action to our expected position
+      id move = [CCMoveTo actionWithDuration:TILE_SPEED position:expectedPxPosition];
+      
+      
+      // Generate a new tile and place above the board, then start the move action
+      TTTile *newTile = [self generateTileFor:tileIndex];
+      [newTile setPosition:CGPointMake(expectedPxPosition.x, expectedPxPosition.y + nullCount*tileSize.height)];
+      [newTile runAction:move];
+      
+      [tiles replaceObjectAtIndex:tileIndex withObject:newTile];
+      [self addChild:newTile];
     }
   }
 }
