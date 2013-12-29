@@ -109,6 +109,9 @@
     [self removeTile: tile];
   }
   
+  // Call our delegate, letting it know we've removed tiles.
+  [self.TileDelegate tilesRemoved:connected.count];
+  
   [self fixBoard];
 }
 

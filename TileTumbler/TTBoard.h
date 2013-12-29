@@ -4,6 +4,12 @@
 
 #define TILE_SPEED 0.5
 
+@protocol TileHandlerDelegate <NSObject>
+
+-(void) tilesRemoved:(uint)number;
+
+@end
+
 @interface TTBoard : CCNode
 {
   // The dimensions of the board (in tiles)
@@ -15,6 +21,9 @@
   // Holds all the tiles on our board
   NSMutableArray *tiles;
 }
+
+// Callback for when tiles are removed.
+@property (nonatomic) id <TileHandlerDelegate> TileDelegate;
 
 // Initialises a new TTBoard with the bottom-left position at (0,0) and
 // with dimensions: boardSize.
