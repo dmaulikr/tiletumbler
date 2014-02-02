@@ -2,7 +2,7 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "IntroLayer.h"
+#import "MainMenuLayer.h"
 
 @implementation AppController
 
@@ -48,7 +48,7 @@
 
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
-  [director_ pushScene: [IntroLayer scene]];
+  [director_ pushScene: [MainMenuLayer scene]];
 
 	navController_ = [[UINavigationController alloc] initWithRootViewController:director_];
 	navController_.navigationBarHidden = YES;

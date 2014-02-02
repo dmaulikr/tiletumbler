@@ -13,8 +13,18 @@
     
     boardSize = _boardSize;
     
-    [self setContentSize:CGSizeMake(tileSize.width*boardSize.width,
-                                    tileSize.height*boardSize.height)];
+    CGSize contentSize = CGSizeMake(tileSize.width*boardSize.width,
+                                    tileSize.height*boardSize.height);
+    
+    [self setContentSize:contentSize];
+    
+    //CCMenuItem *pauseMenuItem = [CCMenuItemImage itemWithNormalImage:@"Pause.png" selectedImage:@"Pause.png" target:self selector:@selector(pauseButtonPressed)];
+    //pauseMenuItem.position = ccp(contentSize.width - pauseMenuItem.contentSize.width - 10, 10);
+    
+    //CCMenu *pauseMenu = [CCMenu menuWithItems:pauseMenuItem, nil];
+    //pauseMenu.position = ccp(0, 0);
+    
+    //[self addChild:pauseMenu z:100];
     
     // Initialise the tiles array and generate a new set of tiles
     [self setupNewTiles];
@@ -22,6 +32,10 @@
   }
   
   return self;
+}
+
+-(void) pauseButtonPressed {
+  
 }
 
 // Initialises the tiles array and prepopulates with blank elements
@@ -260,7 +274,13 @@
   }
   
   // Remove the tile from the board's children
-  [self removeChild:tile cleanup:YES];
+  id fadeOut = [CCFadeOut actionWithDuration:0.5];
+  id callback = [CCCallBlockN actionWithBlock:^(CCNode *node) {
+    [self removeChild:tile cleanup:YES];
+  }];
+                 
+  [tile runAction:[CCSequence actions:fadeOut, callback, nil]];
+
 }
 
 // Convenience method to check the tile index is valid

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5631F0DC189E472100219E20 /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5631F0DB189E472100219E20 /* MainMenuLayer.m */; };
+		5631F0E1189E534200219E20 /* PauseLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5631F0E0189E534200219E20 /* PauseLayer.m */; };
+		5631F0E3189E59C200219E20 /* Border.png in Resources */ = {isa = PBXBuildFile; fileRef = 5631F0E2189E59C200219E20 /* Border.png */; };
+		5631F0E5189E7C0F00219E20 /* TileTumbler.png in Resources */ = {isa = PBXBuildFile; fileRef = 5631F0E4189E7C0F00219E20 /* TileTumbler.png */; };
+		56837F84189DA0460033D2DC /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 56837F83189DA0460033D2DC /* Pause.png */; };
+		56837F88189DA7E10033D2DC /* HeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 56837F87189DA7E10033D2DC /* HeaderBar.png */; };
+		56837F8A189DAB480033D2DC /* Timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 56837F89189DAB480033D2DC /* Timer.png */; };
+		56837F8C189DBC210033D2DC /* overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 56837F8B189DBC210033D2DC /* overlay.png */; };
 		56A0837818490CC800FC910E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A0837718490CC800FC910E /* QuartzCore.framework */; };
 		56A0837A18490CC800FC910E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A0837918490CC800FC910E /* OpenGLES.framework */; };
 		56A0837C18490CC800FC910E /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A0837B18490CC800FC910E /* OpenAL.framework */; };
@@ -131,13 +139,28 @@
 		56A084FB18490CCA00FC910E /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = 56A084FA18490CCA00FC910E /* vec4.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		56A0850018490CCA00FC910E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A084FF18490CCA00FC910E /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		56A0850318490CCA00FC910E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0850218490CCA00FC910E /* AppDelegate.m */; };
-		56A0850918490CCA00FC910E /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0850818490CCA00FC910E /* IntroLayer.m */; };
+		56A0850918490CCA00FC910E /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A0850818490CCA00FC910E /* GameLayer.m */; };
 		56A085121849124A00FC910E /* TTBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A085111849124A00FC910E /* TTBoard.m */; };
 		56A085151849141500FC910E /* TTTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A085141849141500FC910E /* TTTile.m */; };
+		56D7C9E11885B0FD0038629C /* background.aac in Resources */ = {isa = PBXBuildFile; fileRef = 56D7C9E01885B0FD0038629C /* background.aac */; };
+		56D7C9E41885B4390038629C /* button1.aac in Resources */ = {isa = PBXBuildFile; fileRef = 56D7C9E21885B4390038629C /* button1.aac */; };
+		56D7C9E51885B4390038629C /* button2.aac in Resources */ = {isa = PBXBuildFile; fileRef = 56D7C9E31885B4390038629C /* button2.aac */; };
+		56D7C9E71885B56A0038629C /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D7C9E61885B56A0038629C /* music.mp3 */; };
+		56D7C9E91885B5920038629C /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D7C9E81885B5920038629C /* beep.mp3 */; };
 		56F674E41849212700754AFB /* Block.png in Resources */ = {isa = PBXBuildFile; fileRef = 56F674E31849212700754AFB /* Block.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5631F0DA189E472100219E20 /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLayer.h; sourceTree = "<group>"; };
+		5631F0DB189E472100219E20 /* MainMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuLayer.m; sourceTree = "<group>"; };
+		5631F0DF189E534200219E20 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseLayer.h; sourceTree = "<group>"; };
+		5631F0E0189E534200219E20 /* PauseLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseLayer.m; sourceTree = "<group>"; };
+		5631F0E2189E59C200219E20 /* Border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Border.png; sourceTree = "<group>"; };
+		5631F0E4189E7C0F00219E20 /* TileTumbler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TileTumbler.png; sourceTree = "<group>"; };
+		56837F83189DA0460033D2DC /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
+		56837F87189DA7E10033D2DC /* HeaderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeaderBar.png; sourceTree = "<group>"; };
+		56837F89189DAB480033D2DC /* Timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Timer.png; sourceTree = "<group>"; };
+		56837F8B189DBC210033D2DC /* overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = overlay.png; sourceTree = "<group>"; };
 		56A0837418490CC800FC910E /* TileTumbler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TileTumbler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A0837718490CC800FC910E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		56A0837918490CC800FC910E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -396,12 +419,17 @@
 		56A084FF18490CCA00FC910E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		56A0850118490CCA00FC910E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		56A0850218490CCA00FC910E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		56A0850718490CCA00FC910E /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
-		56A0850818490CCA00FC910E /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		56A0850718490CCA00FC910E /* GameLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
+		56A0850818490CCA00FC910E /* GameLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		56A085101849124A00FC910E /* TTBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBoard.h; sourceTree = "<group>"; };
 		56A085111849124A00FC910E /* TTBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBoard.m; sourceTree = "<group>"; };
 		56A085131849141500FC910E /* TTTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTile.h; sourceTree = "<group>"; };
 		56A085141849141500FC910E /* TTTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTile.m; sourceTree = "<group>"; };
+		56D7C9E01885B0FD0038629C /* background.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = background.aac; sourceTree = "<group>"; };
+		56D7C9E21885B4390038629C /* button1.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = button1.aac; sourceTree = "<group>"; };
+		56D7C9E31885B4390038629C /* button2.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = button2.aac; sourceTree = "<group>"; };
+		56D7C9E61885B56A0038629C /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		56D7C9E81885B5920038629C /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 		56F674E31849212700754AFB /* Block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Block.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -463,8 +491,12 @@
 			children = (
 				56A0850118490CCA00FC910E /* AppDelegate.h */,
 				56A0850218490CCA00FC910E /* AppDelegate.m */,
-				56A0850718490CCA00FC910E /* IntroLayer.h */,
-				56A0850818490CCA00FC910E /* IntroLayer.m */,
+				56A0850718490CCA00FC910E /* GameLayer.h */,
+				56A0850818490CCA00FC910E /* GameLayer.m */,
+				5631F0DA189E472100219E20 /* MainMenuLayer.h */,
+				5631F0DB189E472100219E20 /* MainMenuLayer.m */,
+				5631F0DF189E534200219E20 /* PauseLayer.h */,
+				5631F0E0189E534200219E20 /* PauseLayer.m */,
 				56A0850F1849123300FC910E /* TTObjects */,
 				56A084FD18490CCA00FC910E /* Supporting Files */,
 				56A0838A18490CC800FC910E /* Resources */,
@@ -476,6 +508,17 @@
 		56A0838A18490CC800FC910E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5631F0E4189E7C0F00219E20 /* TileTumbler.png */,
+				5631F0E2189E59C200219E20 /* Border.png */,
+				56837F8B189DBC210033D2DC /* overlay.png */,
+				56837F89189DAB480033D2DC /* Timer.png */,
+				56837F87189DA7E10033D2DC /* HeaderBar.png */,
+				56837F83189DA0460033D2DC /* Pause.png */,
+				56D7C9E81885B5920038629C /* beep.mp3 */,
+				56D7C9E61885B56A0038629C /* music.mp3 */,
+				56D7C9E21885B4390038629C /* button1.aac */,
+				56D7C9E31885B4390038629C /* button2.aac */,
+				56D7C9E01885B0FD0038629C /* background.aac */,
 				56F674E31849212700754AFB /* Block.png */,
 				56A0838B18490CC800FC910E /* Default.png */,
 				56A0838D18490CC800FC910E /* Default-Landscape~ipad.png */,
@@ -899,6 +942,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				56A0839A18490CC800FC910E /* Icon-Small.png in Resources */,
+				56D7C9E11885B0FD0038629C /* background.aac in Resources */,
+				56837F88189DA7E10033D2DC /* HeaderBar.png in Resources */,
+				56D7C9E71885B56A0038629C /* music.mp3 in Resources */,
 				56A0838E18490CC800FC910E /* Default-Landscape~ipad.png in Resources */,
 				56A0839E18490CC800FC910E /* Icon.png in Resources */,
 				56A0839818490CC800FC910E /* Icon-Small-50.png in Resources */,
@@ -906,11 +952,19 @@
 				56A083A018490CC800FC910E /* Icon@2x.png in Resources */,
 				56A0838C18490CC800FC910E /* Default.png in Resources */,
 				56A083A318490CC800FC910E /* iTunesArtwork in Resources */,
+				56837F8A189DAB480033D2DC /* Timer.png in Resources */,
 				56A084E118490CCA00FC910E /* ChangeLog in Resources */,
 				56A0839418490CC800FC910E /* fps_images-ipadhd.png in Resources */,
+				56D7C9E41885B4390038629C /* button1.aac in Resources */,
 				56A0839018490CC800FC910E /* fps_images.png in Resources */,
+				5631F0E5189E7C0F00219E20 /* TileTumbler.png in Resources */,
+				56837F84189DA0460033D2DC /* Pause.png in Resources */,
+				5631F0E3189E59C200219E20 /* Border.png in Resources */,
+				56837F8C189DBC210033D2DC /* overlay.png in Resources */,
 				56F674E41849212700754AFB /* Block.png in Resources */,
 				56A0839218490CC800FC910E /* fps_images-hd.png in Resources */,
+				56D7C9E51885B4390038629C /* button2.aac in Resources */,
+				56D7C9E91885B5920038629C /* beep.mp3 in Resources */,
 				56A0839618490CC800FC910E /* Icon-72.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -949,6 +1003,7 @@
 				56A083B418490CC800FC910E /* CCActionGrid.m in Sources */,
 				56A0846318490CC900FC910E /* CCTMXXMLParser.m in Sources */,
 				56A083C618490CC800FC910E /* CCActionProgressTimer.m in Sources */,
+				5631F0DC189E472100219E20 /* MainMenuLayer.m in Sources */,
 				56A0841618490CC900FC910E /* CCParticleExamples.m in Sources */,
 				56A0849518490CC900FC910E /* base64.c in Sources */,
 				56A0848218490CC900FC910E /* CCTouchDispatcher.m in Sources */,
@@ -978,7 +1033,7 @@
 				56A084EF18490CCA00FC910E /* plane.c in Sources */,
 				56A083C318490CC800FC910E /* CCActionPageTurn3D.m in Sources */,
 				56A0850018490CCA00FC910E /* main.m in Sources */,
-				56A0850918490CCA00FC910E /* IntroLayer.m in Sources */,
+				56A0850918490CCA00FC910E /* GameLayer.m in Sources */,
 				56A085151849141500FC910E /* TTTile.m in Sources */,
 				56A084E718490CCA00FC910E /* matrix.c in Sources */,
 				56A084F318490CCA00FC910E /* ray2.c in Sources */,
@@ -994,6 +1049,7 @@
 				56A085121849124A00FC910E /* TTBoard.m in Sources */,
 				56A084F718490CCA00FC910E /* vec2.c in Sources */,
 				56A084BA18490CCA00FC910E /* ZipUtils.m in Sources */,
+				5631F0E1189E534200219E20 /* PauseLayer.m in Sources */,
 				56A0842618490CC900FC910E /* CCScene.m in Sources */,
 				56A0845A18490CC900FC910E /* CCTMXLayer.m in Sources */,
 				56A0845D18490CC900FC910E /* CCTMXObjectGroup.m in Sources */,
