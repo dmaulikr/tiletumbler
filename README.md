@@ -7,6 +7,7 @@ Various falling effects and differing tile-types add variation to the game.
 ===========
 
 Can be downloaded for free in the iOS App-Store: https://itunes.apple.com/gb/app/id849718318?mt=8
+
 ===========
 
 Copyright (C) 2014 Ronan Turner
