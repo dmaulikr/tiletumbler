@@ -1,14 +1,20 @@
 Tile Tumbler
-===========
+============
+
+![alt tag](http://ronanturner.net/statuses/works-yes.png)
+![alt tag](http://ronanturner.net/statuses/status-inactive.png)
+
+1. Intro
+--------
 
 A simple tile-removal game for the iPhone. Touching groups of 3 or more tiles of the same colour removes them. 
 Various falling effects and differing tile-types add variation to the game.
 
-===========
+--------
 
 Can be downloaded for free in the iOS App-Store: https://itunes.apple.com/gb/app/id849718318?mt=8
 
-===========
+--------
 
 Copyright (C) 2014 Ronan Turner
 
