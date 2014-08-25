@@ -10,6 +10,8 @@ Tile Tumbler
 A simple tile-removal game for the iPhone. Touching groups of 3 or more tiles of the same colour removes them. 
 Various falling effects and differing tile-types add variation to the game.
 
+Note: This is the first version of Tile Tumbler, there is an updated version available over at [TileTumbler-v2](https://github.com/ronanturner/tiletumbler-v2). This is a reworked version of this repository and contains additional support for Android.
+
 --------
 
 Can be downloaded for free in the iOS App-Store: https://itunes.apple.com/gb/app/id849718318?mt=8
